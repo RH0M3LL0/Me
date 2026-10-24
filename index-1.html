@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#060b1a">
+<title>Somadina Kelvin Osuanah | Software Troubleshooting &amp; Tech Onboarding</title>
+<meta name="description" content="Software troubleshooting and tech onboarding in Nsukka and Awka. Chat on WhatsApp or Telegram.">
+<script>
+(function(d){d.className='js';try{if(sessionStorage.getItem('sk_seen'))d.className+=' seen'}catch(e){}var t='dark';try{t=localStorage.getItem('sk_theme')}catch(e){}if(t!=='light'&&t!=='dark')t=(window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';d.dataset.theme=t})(document.documentElement)
+</script>
+<style>
+:root{--r:22px;--f:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;--e:cubic-bezier(.22,.8,.3,1)}
+[data-theme=light]{--bg:#fff;--fg:#0b1b3a;--muted:#52607a;--card:#f3f7ff;--line:#dfe7f5;--a:#2563eb;--tint:#e3edff;--btn:linear-gradient(135deg,#2563eb,#0891b2);--btn-fg:#fff;--sh:0 14px 34px -20px rgba(37,99,235,.45);--glow:radial-gradient(60% 50% at 85% 0%,rgba(37,99,235,.14),transparent 70%),radial-gradient(45% 40% at 5% 25%,rgba(13,148,136,.12),transparent 70%)}
+[data-theme=dark]{--bg:#060b1a;--fg:#eaf0ff;--muted:#93a3c4;--card:#0e1630;--line:#1e2b4f;--a:#5b9bff;--tint:#13244d;--btn:linear-gradient(135deg,#3b82f6,#22d3ee);--btn-fg:#04122b;--sh:0 0 0 1px rgba(91,155,255,.07),0 18px 40px -22px rgba(59,130,246,.55);--glow:radial-gradient(60% 50% at 85% 0%,rgba(91,155,255,.28),transparent 70%),radial-gradient(45% 40% at 5% 25%,rgba(139,92,246,.2),transparent 70%)}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--f);-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);background:var(--bg);color:var(--fg);line-height:1.6;transition:background .3s,color .3s}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+section{padding:72px 0}
+h1{font-size:clamp(2.2rem,7vw,4.2rem);line-height:1.05;letter-spacing:-.03em;font-weight:800}
+h2{font-size:clamp(1.6rem,4vw,2.3rem);letter-spacing:-.02em;font-weight:800;margin-bottom:8px}
+.eyebrow{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--a);font-weight:700;margin-bottom:10px}
+.sub{color:var(--muted);max-width:560px}
+header{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+@media(min-width:900px) and (hover:hover){header{background:color-mix(in srgb,var(--bg) 85%,transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}}
+.bar{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
+.brand{font-weight:800;text-decoration:none;letter-spacing:-.02em}
+nav{display:flex;gap:20px;font-size:.85rem;color:var(--muted)}
+nav a{text-decoration:none}nav a:hover{color:var(--fg)}
+.themes{display:flex;border:1px solid var(--line);border-radius:99px;padding:3px}
+.themes button{min-height:34px;border:0;background:none;color:var(--muted);font:600 .72rem var(--f);padding:6px 11px;border-radius:99px;cursor:pointer}
+.themes button.on{background:var(--btn);color:var(--btn-fg)}
+.btn{min-height:46px;display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;font:700 .9rem var(--f);padding:14px 22px;border-radius:99px;background:var(--btn);color:var(--btn-fg);text-decoration:none;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:none;color:var(--fg);border:1px solid var(--line)}
+.hero{background:var(--glow);padding:80px 0 80px;position:relative;overflow:hidden}
+.hero p{margin:20px 0 28px;font-size:1.1rem;color:var(--muted);max-width:560px}
+.row{display:flex;flex-wrap:wrap;gap:12px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.tags span,.tags a{border:1px solid var(--line);border-radius:99px;padding:5px 13px;font-size:.78rem;color:var(--muted)}
+.grid{display:grid;gap:14px;margin-top:32px}
+.g4{grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.g3{grid-template-columns:repeat(auto-fill,minmax(290px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px;box-shadow:var(--sh);text-align:left;color:var(--fg);font:inherit}
+button.card{cursor:pointer;transition:transform .15s,border-color .15s}
+button.card:hover{transform:translateY(-3px);border-color:var(--fg)}
+.card b{display:block;font-size:1rem;margin-bottom:4px}
+.card small{color:var(--muted);font-size:.82rem}
+.num{font-size:2.6rem;font-weight:800;line-height:1;margin-bottom:10px;display:block;color:transparent;-webkit-text-stroke:1.5px #f97316}
+.card ul{list-style:none;padding:0;margin-top:12px;font-size:.85rem;color:var(--muted)}
+.card li:before{content:"— "}
+.band{background:linear-gradient(180deg,var(--card),var(--bg));border-top:1px solid var(--line)}
+.contact{display:grid;gap:12px;margin-top:28px;max-width:420px}
+footer{border-top:1px solid var(--line);padding:28px 0;font-size:.8rem;color:var(--muted)}
+.fab{position:fixed;right:max(18px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));z-index:30;width:56px;height:56px;border-radius:50%;border:0;background:var(--btn);color:var(--btn-fg);font:800 .7rem var(--f);cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+dialog{border:1px solid var(--line);border-radius:24px;background:var(--bg);color:var(--fg);padding:26px;width:min(440px,92vw)}
+dialog::backdrop{background:rgba(0,0,0,.65)}
+dialog label{display:block;font-size:.75rem;font-weight:600;color:var(--muted);margin:14px 0 6px}
+dialog input,dialog select,dialog textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--fg);font:inherit;font-size:16px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+#toast{position:fixed;left:50%;bottom:90px;transform:translate(-50%,20px);opacity:0;background:var(--fg);color:var(--bg);padding:12px 18px;border-radius:12px;font-size:.82rem;font-weight:600;transition:.3s;z-index:50;pointer-events:none;max-width:90vw;text-align:center}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+
+.i{width:1.25em;height:1.25em;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.ico{width:46px;height:46px;border-radius:13px;border:0;background:var(--tint);color:var(--a);display:grid;place-items:center;margin-bottom:14px}
+.ico .i{width:22px;height:22px}
+.btn .i{width:1.15em;height:1.15em}
+.fab .i{width:26px;height:26px}.fab{display:grid;place-items:center}
+.tags span,.tags a{display:inline-flex;align-items:center;gap:6px}.tags .i{width:14px;height:14px;color:var(--a)}
+.hl{background:linear-gradient(90deg,var(--a),#14b8a6);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.chips span{border:1px solid var(--line);background:var(--bg);border-radius:99px;padding:5px 12px;font-size:.8rem}
+.loc .i{color:var(--a)}
+.g2{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.loc{display:flex;gap:10px;align-items:flex-start;color:var(--muted);font-size:.88rem;margin-top:14px;max-width:420px}.loc .i{margin-top:3px;color:var(--fg)}
+
+.brand{display:flex;align-items:center;gap:10px}
+.lg{font-style:normal;width:34px;height:34px;border-radius:10px;background:var(--btn);color:var(--btn-fg);display:grid;place-items:center}
+.eyebrow:before{content:"";display:inline-block;width:26px;height:2px;background:var(--a);margin-right:10px;vertical-align:middle}
+.hero:before{content:"";position:absolute;inset:0;opacity:.5;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:44px 44px;-webkit-mask-image:radial-gradient(70% 70% at 65% 30%,#000,transparent 75%);mask-image:radial-gradient(70% 70% at 65% 30%,#000,transparent 75%)}
+.hg{position:relative;display:grid;gap:48px;align-items:center}
+@media(min-width:900px){.hg{grid-template-columns:1.1fr .9fr}}
+.dev{position:relative;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:18px;box-shadow:var(--sh)}
+.dh{display:flex;align-items:center;gap:6px;margin-bottom:12px;font:600 .72rem/1 ui-monospace,Menlo,Consolas,monospace;color:var(--muted)}
+.dh i{width:9px;height:9px;border-radius:50%;background:#f87171}.dh i:nth-child(2){background:#fbbf24}.dh i:nth-child(3){background:#34d399}.dh span{margin-left:8px}
+.dl{display:flex;gap:10px;align-items:center;padding:12px;border-radius:13px;background:var(--bg);border:1px solid var(--line);margin-top:8px;font-size:.88rem;font-weight:600}
+.dl .i{color:#10b981;width:18px;height:18px}
+.pb{height:8px;border-radius:9px;background:var(--tint);margin-top:16px;overflow:hidden}
+.pb b{display:block;height:100%;background:var(--btn);transform-origin:left;animation:fill 3.4s var(--e) infinite}
+.fl{position:absolute;display:flex;gap:6px;align-items:center;background:var(--bg);border:1px solid var(--line);box-shadow:var(--sh);border-radius:99px;padding:7px 13px;font-size:.74rem;font-weight:700;animation:float 4s ease-in-out infinite}
+.fl .i{width:14px;height:14px;color:var(--a)}.f1{top:-14px;right:16px}.f2{bottom:-14px;left:16px;animation-delay:-2s}
+.mq{overflow:hidden;padding:16px 0;border-block:1px solid var(--line);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.mq div{display:flex;gap:10px;width:max-content;animation:mq 32s linear infinite}
+.mq a{text-decoration:none;color:var(--fg);border:1px solid var(--line);background:var(--card);border-radius:99px;padding:7px 16px;font-size:.85rem;font-weight:600;white-space:nowrap}
+.feat{background:var(--btn);color:var(--btn-fg);border:0}.feat small,.feat ul{color:inherit;opacity:.9}.feat .ico{background:rgba(255,255,255,.22);color:inherit}
+@media(min-width:760px){.span2{grid-column:span 2}}
+button.card:hover,.card:hover{border-color:var(--a)}
+.cg{display:grid;gap:32px;align-items:center}
+@media(min-width:900px){.cg{grid-template-columns:1fr 1fr}}
+.cta{display:grid;gap:12px;padding:26px;border-radius:26px;background:var(--btn);color:var(--btn-fg);box-shadow:var(--sh)}
+.cta .btn{background:var(--bg);color:var(--fg)}.cta .btn.ghost{background:rgba(255,255,255,.16);color:inherit;border-color:rgba(255,255,255,.4)}
+.js .dev,.js .dl{opacity:0}.go .dev{animation:rise .8s var(--e) .3s both}.go .dl{animation:rise .6s var(--e) both}
+.dl:nth-child(2){animation-delay:.6s!important}.dl:nth-child(3){animation-delay:.8s!important}.dl:nth-child(4){animation-delay:1s!important}.dl:nth-child(5){animation-delay:1.2s!important}
+@keyframes fill{0%{transform:scaleX(0)}70%,100%{transform:scaleX(1)}}
+@keyframes float{50%{transform:translateY(-7px)}}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+section{scroll-margin-top:64px}
+body{overflow-x:clip}
+nav a.on,.menu a.on{color:var(--a)}
+.bg{width:44px;height:44px;display:grid;place-items:center;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--fg);cursor:pointer}
+.bg .i{width:22px;height:22px}
+.menu{position:absolute;left:0;right:0;top:100%;background:var(--bg);border-bottom:1px solid var(--line);padding:6px 20px 20px;box-shadow:var(--sh);animation:drop .25s var(--e)}
+.menu[hidden]{display:none}
+.menu a{display:block;padding:14px 2px;border-bottom:1px solid var(--line);font-weight:600;text-decoration:none}
+@keyframes drop{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.sub{margin-top:8px}
+.g3{grid-template-columns:1fr}
+@media(min-width:900px){.g3{grid-template-columns:repeat(3,1fr)}}
+#problems{grid-template-columns:repeat(2,1fr);gap:12px}
+#problems .card{padding:16px}#problems small{font-size:.76rem;display:block;line-height:1.4}#problems .ico{width:40px;height:40px;margin-bottom:10px}
+@media(min-width:1000px){#problems{grid-template-columns:repeat(4,1fr)}#problems .card{padding:20px}}
+#visit .g2{grid-template-columns:repeat(2,1fr);gap:12px}#visit .card{padding:16px}
+@media(min-width:1000px){#visit .g2{grid-template-columns:repeat(4,1fr)}#visit .card{padding:22px}}
+/* ---------- Loading + animations (transform/opacity only: smooth on budget phones) ---------- */
+#loader{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:var(--bg);transition:opacity .45s var(--e),visibility .45s;animation:loaderFailsafe .01s 3.5s forwards}
+#loader.done{opacity:0;visibility:hidden}
+.mark{width:58px;height:58px;border-radius:16px;display:grid;place-items:center;font-weight:800;font-size:1.5rem;background:var(--btn);color:var(--btn-fg);animation:breathe 1.4s ease-in-out infinite}
+.ring{position:absolute;width:92px;height:92px;border-radius:50%;border:2px solid var(--line);border-top-color:var(--a);animation:spin .9s linear infinite}
+.lwrap{position:relative;display:grid;place-items:center;width:92px;height:92px}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes breathe{50%{transform:scale(.9);opacity:.8}}
+@keyframes loaderFailsafe{to{opacity:0;visibility:hidden}}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes pop{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.js .hero .eyebrow,.js .hero h1,.js .hero p,.js .hero .row,.js .hero .tags{opacity:0}
+.go .hero .eyebrow,.go .hero h1,.go .hero p,.go .hero .row,.go .hero .tags{animation:rise .7s var(--e) both}
+.go .hero h1{animation-delay:.08s}.go .hero p{animation-delay:.16s}.go .hero .row{animation-delay:.24s}.go .hero .tags{animation-delay:.32s}
+.js .rv{opacity:0;transform:translateY(24px);transition:opacity .6s var(--e),transform .6s var(--e);transition-delay:var(--d,0s)}
+.js .rv.in{opacity:1;transform:none}
+dialog[open]{animation:pop .3s var(--e)}
+dialog[open]::backdrop{animation:fade .3s ease}
+.btn:active,button.card:active{transform:scale(.97)}
+section:not(.hero){content-visibility:auto;contain-intrinsic-size:auto 520px}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.js .rv,.js .hero *,.js .dl{opacity:1!important;transform:none!important}}
+@media(min-width:1000px){nav{display:flex}.bg,.menu{display:none!important}.themes{margin-left:0}}
+@media(max-width:999px){nav{display:none}.themes{margin-left:auto}}
+@media(max-width:480px){.brand span{display:none}section{padding:56px 0}footer{padding-bottom:96px}}
+
+.seen #loader{display:none}
+.ph{padding:56px 0 44px!important}.ph h1{font-size:clamp(2rem,6vw,3rem)}.ph .sub{margin:14px 0 0}
+a.card{display:block;text-decoration:none}
+.fl2{display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:10px}.fl2 a{text-decoration:none}.fl2 a:hover{color:var(--fg)}
+.pg{display:none;min-height:70vh}.pg.act{display:block}html:not(.js) .pg{display:block}
+.ask{display:flex;align-items:center;gap:6px;margin-top:16px;font-size:.8rem;font-weight:700;color:var(--a)}.feat .ask{color:inherit}.ask .i{width:14px;height:14px}
+.end{padding:0 0 64px!important;text-align:center}
+#services .g3{grid-template-columns:1fr}@media(min-width:720px){#services .g3{grid-template-columns:repeat(2,1fr)}}
+#problems .card:last-child:nth-child(odd){grid-column:1/-1}
+@media(min-width:1000px){#problems{grid-template-columns:repeat(3,1fr)!important}#problems .card:last-child:nth-child(odd){grid-column:auto}}
+.tags a:hover,.mq a:hover{border-color:var(--a)}
+.mq:hover div,.mq:active div{animation-play-state:paused}
+</style>
+</head>
+<body>
+<div id="loader" aria-hidden="true"><div class="lwrap"><div class="ring"></div><div class="mark">S</div></div></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="laptop" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20"/></symbol>
+<symbol id="gauge" viewBox="0 0 24 24"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></symbol>
+<symbol id="shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></symbol>
+<symbol id="app" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8h20M6 4v4M10 4v4"/></symbol>
+<symbol id="users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+<symbol id="drive" viewBox="0 0 24 24"><path d="M22 12H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/><path d="M6 16h.01M10 16h.01"/></symbol>
+<symbol id="chat" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+<symbol id="send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></symbol>
+<symbol id="phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+<symbol id="mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+<symbol id="pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+<symbol id="truck" viewBox="0 0 24 24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
+<symbol id="building" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01"/></symbol>
+<symbol id="door" viewBox="0 0 24 24"><path d="M13 4h3a2 2 0 0 1 2 2v14M2 20h3M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></symbol>
+<symbol id="search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+<symbol id="check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+<symbol id="code" viewBox="0 0 24 24"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></symbol>
+<symbol id="burger" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+<symbol id="x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+<symbol id="game" viewBox="0 0 24 24"><path d="M6 11h4M8 9v4M15 12h.01M18 10h.01"/><path d="M17.32 5H6.68a4 4 0 0 0-3.98 3.59C2.6 9.42 2 14.46 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.41-1.41A2 2 0 0 1 9.83 16h4.34a2 2 0 0 1 1.41.59L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.55-.6-6.58-.69-7.26A4 4 0 0 0 17.32 5z"/></symbol>
+<symbol id="cap" viewBox="0 0 24 24"><path d="M21.42 10.92a1 1 0 0 0-.02-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0z"/><path d="M22 10v6M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></symbol>
+</defs></svg>
+<header><div class="wrap bar">
+  <a class="brand" href="#/"><i class="lg">S</i><span>Somadina K. Osuanah</span></a>
+  <nav><a href="#/" data-p="index">Home</a><a href="#/problems" data-p="problems">Problems</a><a href="#/services" data-p="services">Services</a><a href="#/skills" data-p="skills">Skills</a><a href="#/about" data-p="about">About</a><a href="#/contact" data-p="contact">Contact</a></nav>
+  <div class="themes" role="group" aria-label="Theme"><button data-t="light">Light</button><button data-t="dark">Dark</button></div>
+  <button class="bg" id="bg" aria-label="Menu" aria-expanded="false" aria-controls="menu"><svg class="i"><use href="#burger"/></svg></button>
+</div>
+<div class="menu" id="menu" hidden><a href="#/" data-p="index">Home</a><a href="#/problems" data-p="problems">Problems</a><a href="#/services" data-p="services">Services</a><a href="#/skills" data-p="skills">Skills</a><a href="#/about" data-p="about">About</a><a href="#/contact" data-p="contact">Contact</a><button class="btn" style="width:100%;margin-top:14px" onclick="openChat('')"><svg class="i" aria-hidden="true"><use href="#chat"/></svg> Chat now</button></div></header>
+<main id="top">
+<div class="pg" id="pg-index">
+<section class="hero"><div class="wrap hg"><div>
+  <div class="eyebrow">Software troubleshooting · Tech onboarding · Nsukka &amp; Awka</div>
+  <h1>Your tech problem,<br><span class="hl">fixed properly.</span></h1>
+  <p>I'm Somadina. I diagnose and fix software faults and set up new devices and teams. Tell me what's wrong and we'll talk directly.</p>
+  <div class="row">
+    <button class="btn" onclick="openChat('')"><svg class="i" aria-hidden="true"><use href="#chat"/></svg> Chat on WhatsApp / Telegram</button>
+    <a class="btn ghost" href="#/problems"><svg class="i" aria-hidden="true"><use href="#search"/></svg> Pick your problem</a>
+  </div>
+  <div class="tags"><a href="#/contact"><svg class="i" aria-hidden="true"><use href="#pin"/></svg> Hilltop, UNN</a><a href="#/contact"><svg class="i" aria-hidden="true"><use href="#truck"/></svg> Pickup anywhere</a><a href="#/contact"><svg class="i" aria-hidden="true"><use href="#truck"/></svg> Delivery anywhere</a><a href="#/contact"><svg class="i" aria-hidden="true"><use href="#building"/></svg> Awka branch</a></div>
+</div>
+  <div class="dev" aria-hidden="true">
+    <div class="dh"><i></i><i></i><i></i><span>diagnostics.exe</span></div>
+    <div class="dl"><svg class="i" aria-hidden="true"><use href="#check"/></svg> Windows errors fixed</div>
+    <div class="dl"><svg class="i" aria-hidden="true"><use href="#check"/></svg> Virus &amp; malware removed</div>
+    <div class="dl"><svg class="i" aria-hidden="true"><use href="#check"/></svg> Files backed up safely</div>
+    <div class="dl"><svg class="i" aria-hidden="true"><use href="#check"/></svg> Ready for pickup or delivery</div>
+    <div class="pb"><b></b></div>
+    <div class="fl f1"><svg class="i" aria-hidden="true"><use href="#pin"/></svg> Hilltop UNN · Awka</div>
+    <div class="fl f2"><svg class="i" aria-hidden="true"><use href="#truck"/></svg> Pickup &amp; delivery</div>
+  </div>
+</div></section>
+
+<div class="mq"><div id="mq"></div></div>
+</div>
+<div class="pg" id="pg-problems">
+<section id="problem"><div class="wrap">
+  <div class="eyebrow">Step 1</div><h2>What's the problem?</h2>
+  <p class="sub">Tap the one closest to yours. A chat opens with your message already written.</p>
+  <div class="grid g4" id="problems"></div>
+</div></section>
+</div>
+<div class="pg" id="pg-services">
+<section id="services"><div class="wrap">
+  <div class="eyebrow">What I do</div><h2>Services</h2>
+  <p class="sub">Tap a service to message me about it.</p>
+  <div class="grid g3">
+    <button class="card feat" onclick="openChat('Software or app not working')"><div class="ico"><svg class="i" aria-hidden="true"><use href="#shield"/></svg></div><b>Software Troubleshooting</b><small>Find the cause, not just the symptom.</small><ul><li>Windows repair and reinstall</li><li>Virus and malware removal</li><li>Slow, crashing or boot issues</li></ul><span class="ask">Ask about this <svg class="i" aria-hidden="true"><use href="#send"/></svg></span></button>
+    <button class="card" onclick="openChat('New laptop or staff onboarding')"><div class="ico"><svg class="i" aria-hidden="true"><use href="#users"/></svg></div><b>Onboarding &amp; Support</b><small>New device or new team, ready to use.</small><ul><li>New laptop setup</li><li>Staff accounts and software</li><li>Remote and on-site help</li></ul><span class="ask">Ask about this <svg class="i" aria-hidden="true"><use href="#send"/></svg></span></button>
+    <button class="card" onclick="openChat('PC game installation')"><div class="ico"><svg class="i" aria-hidden="true"><use href="#game"/></svg></div><b>PC Games Installation</b><small>Get your games installed and running.</small><ul><li>Steam, Epic and other launchers</li><li>Game installs and updates</li><li>Checking your PC can run them</li></ul><span class="ask">Ask about this <svg class="i" aria-hidden="true"><use href="#send"/></svg></span></button>
+    <button class="card" onclick="openChat('Data backup or recovery')"><div class="ico"><svg class="i" aria-hidden="true"><use href="#drive"/></svg></div><b>Data Backup &amp; Recovery</b><small>Keep your files safe and get them back.</small><ul><li>Backup before a reinstall</li><li>File recovery help</li><li>Cloud storage setup</li></ul><span class="ask">Ask about this <svg class="i" aria-hidden="true"><use href="#send"/></svg></span></button>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow">Process</div><h2>How it works</h2>
+  <div class="grid g3">
+    <div class="card"><div class="ico"><svg class="i" aria-hidden="true"><use href="#search"/></svg></div><span class="num">01</span><b>Pick your problem</b><small>Choose it above, add a few details.</small></div>
+    <div class="card"><div class="ico"><svg class="i" aria-hidden="true"><use href="#chat"/></svg></div><span class="num">02</span><b>Chat with me</b><small>WhatsApp or Telegram. I confirm the fault and the rate.</small></div>
+    <div class="card"><div class="ico"><svg class="i" aria-hidden="true"><use href="#check"/></svg></div><span class="num">03</span><b>Get it fixed</b><small>Remote where possible, hands-on where needed.</small></div>
+  </div>
+</div></section>
+
+<section class="end"><div class="wrap"><button class="btn" onclick="openChat('')"><svg class="i" aria-hidden="true"><use href="#chat"/></svg> Chat on WhatsApp / Telegram</button></div></section>
+</div>
+<div class="pg" id="pg-skills">
+<section id="skills"><div class="wrap">
+  <div class="eyebrow">Skills</div><h2>What I can do for you</h2>
+  <p class="sub">Hands-on technical skills, from fixing devices to explaining the fix in plain language.</p>
+  <div class="grid g3">
+        <div class="card"><div class="ico"><svg class="i" aria-hidden="true"><use href="#shield"/></svg></div><b>Software &amp; Troubleshooting</b><div class="chips"><span>Software installation</span><span>PC game installation</span><span>Troubleshooting</span><span>Windows repair</span><span>Virus &amp; malware removal</span></div></div>
+    <div class="card"><div class="ico"><svg class="i" aria-hidden="true"><use href="#users"/></svg></div><b>Onboarding &amp; Support</b><div class="chips"><span>Device &amp; software setup</span><span>Staff onboarding</span><span>Clear explanations for non-technical users</span><span>Remote &amp; on-site help</span></div></div>
+    <div class="card"><div class="ico"><svg class="i" aria-hidden="true"><use href="#code"/></svg></div><b>Programming &amp; Web</b><div class="chips"><span>Python</span><span>Java</span><span>C++</span><span>C#</span><span>JavaScript</span><span>HTML</span><span>CSS</span><span>MySQL</span><span>Vercel deployment</span></div></div>
+  </div>
+</div></section>
+
+<section class="end"><div class="wrap"><button class="btn" onclick="openChat('')"><svg class="i" aria-hidden="true"><use href="#chat"/></svg> Chat on WhatsApp / Telegram</button></div></section>
+</div>
+<div class="pg" id="pg-about">
+<section id="about" class="band"><div class="wrap">
+  <div class="eyebrow">About</div><div class="ico"><svg class="i" aria-hidden="true"><use href="#cap"/></svg></div><h2>Somadina Kelvin Osuanah</h2>
+  <p class="sub">300-level Computer and Robotics Education student at the University of Nigeria, Nsukka. Self-taught across Python, Java, C++, C# and JavaScript, and experienced in solving real technical problems for real users. I fix the issue, then explain it clearly.</p>
+</div></section>
+
+<section id="work"><div class="wrap">
+  <div class="eyebrow">Work</div><h2>Featured project</h2>
+  <div class="grid"><div class="card"><b>UNN Computer &amp; Robotics Education Portal</b>
+    <small>Department website with academic information, updates and resources. Built with HTML, Tailwind CSS and JavaScript.</small><br><br>
+    <a class="btn ghost" href="https://computer-and-robotics-education.vercel.app" target="_blank" rel="noopener">View live site</a></div></div>
+</div></section>
+
+<section class="end"><div class="wrap"><button class="btn" onclick="openChat('')"><svg class="i" aria-hidden="true"><use href="#chat"/></svg> Chat on WhatsApp / Telegram</button></div></section>
+</div>
+<div class="pg" id="pg-contact">
+<section id="contact" class="band"><div class="wrap cg">
+  <div><div class="eyebrow">Contact</div><h2>Ready to get it fixed?</h2><p class="sub">Same number for calls and WhatsApp. Telegram: @Rhomell0. Mon–Sat, 8:00 AM – 6:00 PM.</p><div class="loc"><svg class="i" aria-hidden="true"><use href="#pin"/></svg><span>Hilltop, UNN, Nsukka. Branch in Awka, Anambra. Pickup and delivery anywhere (delivery charges apply).</span></div></div>
+  <div class="cta">
+    <button class="btn" onclick="openChat('')"><svg class="i" aria-hidden="true"><use href="#chat"/></svg> WhatsApp</button>
+    <button class="btn ghost" onclick="openChat('','telegram')"><svg class="i" aria-hidden="true"><use href="#send"/></svg> Telegram</button>
+    <a class="btn ghost call" href="#"><svg class="i" aria-hidden="true"><use href="#phone"/></svg> Call +234 802 617 9274</a>
+    <a class="btn ghost" href="mailto:somadinakelvinosuanah@gmail.com"><svg class="i" aria-hidden="true"><use href="#mail"/></svg> somadinakelvinosuanah@gmail.com</a>
+  </div>
+</div></section>
+
+<section id="visit" class="band"><div class="wrap">
+  <div class="eyebrow">Visit, pickup or delivery</div><h2>Get it to me, or I come to you</h2>
+  <p class="sub">Pick whichever is easiest. Pickup and delivery are available anywhere.</p>
+  <div class="grid g2">
+    <div class="card"><div class="ico"><svg class="i" aria-hidden="true"><use href="#door"/></svg></div><b>Walk in</b><small>Hilltop, University of Nigeria, Nsukka (UNN).</small></div>
+    <div class="card"><div class="ico"><svg class="i" aria-hidden="true"><use href="#truck"/></svg></div><b>Pickup anywhere</b><small>I come and collect your device from wherever you are.</small></div>
+    <div class="card"><div class="ico"><svg class="i" aria-hidden="true"><use href="#truck"/></svg></div><b>Delivery anywhere</b><small>Repaired device brought back to you. Delivery charges apply.</small></div>
+    <div class="card"><div class="ico"><svg class="i" aria-hidden="true"><use href="#building"/></svg></div><b>Awka branch</b><small>Also available in Awka, Anambra State.</small></div>
+  </div>
+</div></section>
+</div>
+</main>
+<footer><div class="wrap"><div class="fl2"><a href="#/" data-p="index">Home</a><a href="#/problems" data-p="problems">Problems</a><a href="#/services" data-p="services">Services</a><a href="#/skills" data-p="skills">Skills</a><a href="#/about" data-p="about">About</a><a href="#/contact" data-p="contact">Contact</a></div>© 2026 Somadina Kelvin Osuanah · Nsukka &amp; Awka</div></footer>
+<button class="fab" onclick="openChat('')" aria-label="Chat"><svg class="i" aria-hidden="true"><use href="#chat"/></svg></button>
+<dialog id="dlg">
+  <h3 style="font-size:1.2rem">Message Somadina</h3>
+  <label for="svc">Problem</label><select id="svc"></select>
+  <label for="nm">Your name (optional)</label><input id="nm">
+  <label for="dt">Details (optional)</label><textarea id="dt" rows="3" placeholder="e.g. HP laptop, black screen after logo"></textarea>
+  <div class="two">
+    <button class="btn" onclick="send('whatsapp')"><svg class="i" aria-hidden="true"><use href="#chat"/></svg> WhatsApp</button>
+    <button class="btn ghost" onclick="send('telegram')"><svg class="i" aria-hidden="true"><use href="#send"/></svg> Telegram</button>
+  </div>
+  <button class="btn ghost" style="width:100%;margin-top:10px;border:0" onclick="dlg.close()">Cancel</button>
+</dialog>
+<div id="toast"></div>
+<script>
+
+/* EDIT HERE: number in international format (digits only); Telegram @username without "@" */
+const CONFIG={whatsappNumber:'2348026179274',telegramUsername:'Rhomell0'};
+const PROBLEMS=[
+ ['Slow, crashing or stuck on boot','Windows errors and freezes','gauge'],
+ ['Windows install or repair','Reinstall, reset or fix Windows','laptop'],
+ ['Virus or malware','Pop-ups, hijacked browser, ransomware','shield'],
+ ['Software or app not working','Installs, licences, errors','app'],
+ ['New laptop or staff onboarding','Setup for you or your team','users'],
+ ['Data backup or recovery','Save or retrieve your files','drive'],
+ ['PC game installation','Install and set up games on your PC','game'],
+ ['Pickup or delivery request','Book a collection or drop-off','truck'],
+ ['Something else','Not sure yet? Just ask','chat']
+];
+const SK=['PC game installation','Troubleshooting','Onboarding','Virus removal','Data recovery','Python','Java','C++','C#','JavaScript','HTML','CSS','MySQL','Vercel'];
+const $=id=>document.getElementById(id),dlg=$('dlg');
+if($('problems'))$('problems').innerHTML=PROBLEMS.map(([t,s,ic],i)=>`<button class="card" onclick="openChat('${t}')"><div class="ico"><svg class="i" aria-hidden="true"><use href="#${ic}"/></svg></div><b>${t}</b><small>${s}</small></button>`).join('');
+$('svc').innerHTML=PROBLEMS.map(([t])=>`<option>${t}</option>`).join('');
+if($('mq'))(h=>$('mq').innerHTML=h+h)(SK.map(x=>`<a href="#/skills">${x}</a>`).join(''));
+document.querySelectorAll('.call').forEach(a=>a.href='tel:+'+CONFIG.whatsappNumber);
+
+function openChat(p){if(p)$('svc').value=p;dlg.showModal()}
+function toast(m){const t=$('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),4500)}
+function copy(t){try{navigator.clipboard.writeText(t)}catch(e){const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove()}}
+function send(ch){
+ const n=$('nm').value.trim(),d=$('dt').value.trim();
+ const msg=`Hello Somadina, ${n?'my name is '+n+'. ':''}I found you through your website.\n\nProblem: ${$('svc').value}${d?'\nDetails: '+d:''}\n\nPlease let me know how we can fix this.`;
+ dlg.close();
+ if(ch==='whatsapp'){window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`,'_blank','noopener')}
+ else{copy(msg);const u=CONFIG.telegramUsername.includes('YOUR_')?`https://t.me/+${CONFIG.whatsappNumber}`:`https://t.me/${CONFIG.telegramUsername}`;
+  window.open(u,'_blank','noopener');toast('Message copied. Paste it in the Telegram chat and send.')}
+}
+function setTheme(t){document.documentElement.dataset.theme=t;document.querySelector('meta[name=theme-color]').content=t==='light'?'#ffffff':'#060b1a';document.querySelectorAll('.themes button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));try{localStorage.setItem('sk_theme',t)}catch(e){}}
+document.querySelectorAll('.themes button').forEach(b=>b.onclick=()=>setTheme(b.dataset.t));
+setTheme(document.documentElement.dataset.theme);
+/* Mobile menu + active link highlight */
+const mn=$('menu'),bg=$('bg');
+function menu(o){mn.hidden=!o;bg.setAttribute('aria-expanded',o);bg.querySelector('use').setAttribute('href',o?'#x':'#burger')}
+bg.onclick=()=>menu(mn.hidden);
+mn.onclick=e=>{if(e.target.closest('a,button'))menu(false)};
+document.addEventListener('keydown',e=>{if(e.key==='Escape')menu(false)});
+document.addEventListener('click',e=>{if(!mn.hidden&&!e.target.closest('header'))menu(false)});
+
+
+/* Loader hides on DOM ready (never waits for images/fonts): short minimum so it feels intentional, hard cap for slow nets */
+const t0=performance.now(),root=document.documentElement;
+function start(){
+ try{sessionStorage.setItem('sk_seen','1')}catch(e){}
+ const ld=$('loader');ld.classList.add('done');root.classList.add('go');
+ setTimeout(()=>ld.remove(),600);
+ const els=document.querySelectorAll('.eyebrow:not(.hero .eyebrow),section:not(.hero) h2,.sub,section:not(.hero) .card,.cta');
+ els.forEach(e=>e.classList.add('rv'));
+ document.querySelectorAll('.grid').forEach(g=>[...g.children].forEach((c,i)=>c.style.setProperty('--d',Math.min(i,6)*.07+'s')));
+ if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return}
+ const io=window.__io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{rootMargin:'0px 0px -8% 0px'});
+ els.forEach(e=>io.observe(e));
+}
+setTimeout(start,root.classList.contains('seen')?0:Math.max(0,600-(performance.now()-t0)));
+
+/* Page router: one file, four pages (#/ , #/services , #/about , #/contact) */
+const TITLES={index:'Somadina Kelvin Osuanah | Software Troubleshooting & Tech Onboarding',problems:'Pick Your Problem | Somadina Kelvin Osuanah',skills:'Skills | Somadina Kelvin Osuanah',services:'Services | Somadina Kelvin Osuanah',about:'About & Skills | Somadina Kelvin Osuanah',contact:'Contact | Somadina Kelvin Osuanah'};
+function route(){
+ const h=location.hash;if(h&&h.indexOf('#/')!==0)return;
+ const k=h.replace(/^#\/?/,'').replace(/\/$/,'');const id=TITLES[k]?k:'index';
+ document.querySelectorAll('.pg').forEach(p=>p.classList.toggle('act',p.id==='pg-'+id));
+ document.querySelectorAll('nav a,#menu a,.fl2 a').forEach(a=>a.classList.toggle('on',a.dataset.p===id));
+ document.title=TITLES[id];
+ window.scrollTo({top:0,behavior:'instant'});
+ if(window.__io)document.getElementById('pg-'+id).querySelectorAll('.rv').forEach(e=>{e.classList.remove('in');window.__io.observe(e)});
+}
+addEventListener('hashchange',route);route();
+
+</script>
+</body>
+</html>
